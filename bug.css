@@ -1,0 +1,19 @@
+The following CSS code snippet demonstrates an uncommon error that may not immediately be apparent:
+
+```css
+div {
+  width: 50%;
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+/* This div unexpectedly doesn't clear the floats because of the specificity issue */
+.wrapper > .clear {
+  clear: both;
+}
+```
+
+In this scenario, the `.clear` class is intended to clear floats within its parent `.wrapper`. However, a less specific selector also targets `.clear` globally.  When both the global `.clear` and the specific `.wrapper > .clear` are present, the global one is overridden because of specificity.  The wrapper's child `.clear` will not successfully clear the floats, thus causing unexpected layout behavior.
