@@ -1,0 +1,38 @@
+The solution involves adjusting the CSS to ensure that the intended selector has higher specificity and is therefore applied correctly:
+
+```css
+div {
+  width: 50%;
+  float: left;
+}
+
+/* Removing the global .clear selector */
+/*.clear {
+  clear: both;
+}*/
+
+/* The specificity is solved with a more specific selector to clear floats inside of the wrapper. */
+.wrapper {
+  overflow: auto;
+}
+
+```
+
+Alternatively, instead of removing the global selector, you can give the specific selector higher specificity, by adding another parent element:
+
+```css
+div {
+  width: 50%;
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.wrapper > .container > .clear {
+  clear: both;
+}
+```
+
+By using more specific selectors, we ensure that the intended behavior occurs.  The choice depends on your overall layout structure. Using overflow: auto also works as a solution in many situations.
